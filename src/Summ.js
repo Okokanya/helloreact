@@ -27,7 +27,7 @@ class Summ extends Component {
     return (
       <div>
         <div className="summ">
-          <div className="colwide">Итого:</div>
+          <div className="colwide">Summ:</div>
           <div className="col">{this.countSumm('fat')}</div>
           <div className="col">{this.countSumm('carbs')}</div>
           <div className="col">{this.countSumm('prots')}</div>
