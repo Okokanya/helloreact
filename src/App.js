@@ -36,7 +36,7 @@ class App extends Component {
             <div className="col">Carb</div>
             <div className="col">Protein</div>
             <div className="col">Portion</div>
-            <div className="col"></div>
+            <div className="col"/>
           </div>
           <List items={this.state.items} onRemoveItem={this.removeItem}/>  
         </div>
