@@ -14,11 +14,11 @@ class Form extends Component {
   }
 
   handleSubmitForm = () => {
-    if (isNaN(this.state.fat) || isNaN(this.state.carbs) || isNaN(this.state.prots)) {
+    if (isNaN(this.state.fat) || isNaN(this.state.carbs) || isNaN(this.state.prots) || isNaN(this.state.portion)) {
       this.setState({ error: true });
-    } else {
-      this.props.onSubmit(this.state);
-      this.setState(initialState);
+    } 
+    else { this.props.onSubmit(this.state);
+    this.setState(initialState);
     }
   }
 
@@ -44,6 +44,11 @@ class Form extends Component {
         <div className="col">
           <input
             onChange={(e) => {this.handleInputChange('prots', e.target.value)}}
+          />
+        </div>
+        <div className="col">
+        <input
+            onChange={(e) => {this.handleInputChange('portion', e.target.value)}}
           />
         </div>
         <div className="col">

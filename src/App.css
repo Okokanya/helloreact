@@ -61,11 +61,13 @@ button:hover {
 }
 
 .colwide {
-  flex-grow: 3;
+  flex-grow: 2;
+
 }
 
 .col {
   flex-grow: 1;
+  font-size: 12px;
 }
 
 .tableheader{

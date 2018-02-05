@@ -18,6 +18,12 @@ class App extends Component {
     this.setState({ items: modifiedItems })
   }
 
+  removeItem = (index) => {
+    const items = this.state.items;
+    items.splice(index, 1);
+    this.setState({ items });
+  }
+
   render() {
     return (
       <div className="app">
@@ -29,9 +35,10 @@ class App extends Component {
             <div className="col">Fat</div>
             <div className="col">Carb</div>
             <div className="col">Protein</div>
+            <div className="col">Portion</div>
             <div className="col"></div>
           </div>
-          <List items={this.state.items} />  
+          <List items={this.state.items} onRemoveItem={this.removeItem}/>  
         </div>
         <Form onSubmit={this.addItem} /> 
         <Summ items={this.state.items} />

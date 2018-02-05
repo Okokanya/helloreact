@@ -8,8 +8,9 @@ class Item extends Component {
         <div className="col">{this.props.fat}</div>
         <div className="col">{this.props.carbs}</div>
         <div className="col">{this.props.prots}</div>
+        <div className="col">{this.props.portion}</div>
         <div className="col">
-          <button className="button-del">–</button>
+          <button className="button-del" onClick={this.props.onRemoveItem} >–</button>
         </div>
       </li>
     );

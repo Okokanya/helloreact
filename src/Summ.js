@@ -4,10 +4,11 @@ class Summ extends Component {
 
   countSumm = (type) => {
     const counted = this.props.items.reduce((acc, item) => {
-      const summ = acc + item[type];
+      const value = type === 'portion' ? item[type] : item[type] / 100 * item.portion;
+      const summ = acc + value;
       return summ;
     }, 0);
-    return counted;
+    return Number((counted).toFixed(1));
   }
 
   countTotal = () => {
@@ -31,13 +32,19 @@ class Summ extends Component {
           <div className="col">{this.countSumm('fat')}</div>
           <div className="col">{this.countSumm('carbs')}</div>
           <div className="col">{this.countSumm('prots')}</div>
+          <div className="col">{this.countSumm('portion')}</div>
+
           <div className="col"></div>
         </div>
         <div className="percent">
-          <div className="colwide"></div>
+          <div className="colwide"/>
           <div className="col">{this.countPercent('fat')}%</div>
           <div className="col">{this.countPercent('carbs')}%</div>
           <div className="col">{this.countPercent('prots')}%</div>
+          <div className="col"/>
+
+
+          
           <div className="col"></div>
         </div>
       </div>
