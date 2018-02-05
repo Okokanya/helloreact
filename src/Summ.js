@@ -33,8 +33,7 @@ class Summ extends Component {
           <div className="col">{this.countSumm('carbs')}</div>
           <div className="col">{this.countSumm('prots')}</div>
           <div className="col">{this.countSumm('portion')}</div>
-
-          <div className="col"></div>
+          <div className="col"/>
         </div>
         <div className="percent">
           <div className="colwide"/>
@@ -42,10 +41,7 @@ class Summ extends Component {
           <div className="col">{this.countPercent('carbs')}%</div>
           <div className="col">{this.countPercent('prots')}%</div>
           <div className="col"/>
-
-
-          
-          <div className="col"></div>
+          <div className="col"/>
         </div>
       </div>
     );
