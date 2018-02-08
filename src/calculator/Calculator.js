@@ -27,6 +27,7 @@ class Calculator extends Component {
             <div className="col">Fat</div>
             <div className="col">Carb</div>
             <div className="col">Protein</div>
+            <div className="col">Portion</div>
             <div className="col"></div>
           </div>
           <List items={this.state.items} />  

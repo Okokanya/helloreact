@@ -40,7 +40,6 @@ button.round {
   background: rgba(148, 78, 78, 0.523);
 }
 
-
 button:hover {
   opacity: 0.5;
 }
@@ -61,11 +60,13 @@ button:hover {
 }
 
 .colwide {
-  flex-grow: 3;
+  flex-grow: 2;
+
 }
 
 .col {
   flex-grow: 1;
+  font-size: 12px;
 }
 
 .tableheader{

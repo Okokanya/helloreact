@@ -12,6 +12,8 @@ class List extends Component {
             fat={item.fat}
             carbs={item.carbs}
             prots={item.prots}
+            portion={item.portion}
+            onRemoveItem={(e) => {this.props.onRemoveItem(index)}}
           />
         ))}
       </ul>
