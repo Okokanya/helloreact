@@ -23,7 +23,7 @@ input {
   font-size: 14px;
 }
 
-button {
+button.round {
   background: rgba(53, 154, 53, 0.466);
   color: white;
   border: none;

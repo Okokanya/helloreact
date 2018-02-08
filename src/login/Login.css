@@ -1,0 +1,12 @@
+.login-form {
+  padding: 20px;
+}
+
+.login-row {
+  margin: 10px 0;
+}
+
+.login-row input {
+  border: 1px solid grey;
+  border-radius: 2px;
+}

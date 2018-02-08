@@ -47,7 +47,7 @@ class Form extends Component {
           />
         </div>
         <div className="col">
-          <button onClick={this.handleSubmitForm} >+</button>
+          <button className="round" onClick={this.handleSubmitForm} >+</button>
         </div>
       </div>
     );
