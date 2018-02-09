@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { auth } from '../firebase';
-import './Login.css';
+import { auth } from '../../firebase';
+import './auth.css';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
 });
 
-class Login extends Component {
+class Signin extends Component {
   state = {
     email: '',
     password: '',
@@ -16,7 +16,7 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    auth.createUserWithEmailAndPassword(email, password)
+    auth.signInWithEmailAndPassword(email, password)
       .then((answer) => {
         console.log('login', answer);
       })
@@ -31,7 +31,7 @@ class Login extends Component {
 
     return (
       <div className="login-form">
-        <h1>Sign up</h1>
+        <h1>Please login</h1>
         <form onSubmit={this.onSubmit}>
           {error}
           <div className="login-row">
@@ -50,11 +50,11 @@ class Login extends Component {
               onChange={event => this.setState(byPropKey('password', event.target.value))}
             />
           </div>
-          <button type="submit" disabled={isInvalid} >Register</button>
+          <button type="submit" disabled={isInvalid}>Enter</button>
         </form>
       </div>
     )
   }
 }
 
-export default Login;
+export default Signin;

@@ -1,13 +1,42 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
+import * as routes from './routes';
 import Calculator from './components/calculator/Calculator';
-import Login from './components/login/Login';
+import Signin from './components/auth/Signin';
+import Signup from './components/auth/Signup';
+
+
+const initialState = { user: null };
 
 class App extends Component {
+  state = initialState;
+
   render() {
     return (
-      <div className="app">
-        <Login />
-      </div>
+      <Router>
+        <div className="app">
+          <div className="navigation-bar">
+            <ul>
+              <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
+              <li><Link to={routes.CALCULATOR}>Calculator</Link></li>
+              <li><Link to={routes.ACCOUNT}>Account</Link></li>
+            </ul>
+          </div>
+          <Route
+            exact path={routes.SIGN_UP}
+            component={() => <Signup />}
+          />
+          <Route
+            exact path={routes.SIGN_IN}
+            component={() => <Signin />}
+          />
+          <Route
+            exact path={routes.CALCULATOR}
+            component={() => <Calculator />}
+          />
+        </div>
+      </Router>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase';
-import './Login.css';
+import './auth.css';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -16,7 +16,7 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    auth.signInWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(email, password)
       .then((answer) => {
         console.log('login', answer);
       })
@@ -31,7 +31,7 @@ class Login extends Component {
 
     return (
       <div className="login-form">
-        <h1>Please login</h1>
+        <h1>Sign up</h1>
         <form onSubmit={this.onSubmit}>
           {error}
           <div className="login-row">
@@ -50,7 +50,7 @@ class Login extends Component {
               onChange={event => this.setState(byPropKey('password', event.target.value))}
             />
           </div>
-          <button type="submit" disabled={isInvalid} >Enter</button>
+          <button type="submit" disabled={isInvalid} >Register</button>
         </form>
       </div>
     )
