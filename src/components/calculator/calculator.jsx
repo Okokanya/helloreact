@@ -10,10 +10,10 @@ class Calculator extends Component {
     items: []
   };
 
-  addItem = (item) => {
+  addItem = item => {
     const items = this.state.items;
     const modifiedItems = [ ...items, item ];
-    this.setState({ items: modifiedItems })
+    this.setState({ items: modifiedItems });
   }
 
   render() {
@@ -28,11 +28,11 @@ class Calculator extends Component {
             <div className="col">Carb</div>
             <div className="col">Protein</div>
             <div className="col">Portion</div>
-            <div className="col"></div>
+            <div className="col" />
           </div>
-          <List items={this.state.items} />  
+          <List items={this.state.items} />
         </div>
-        <Form onSubmit={this.addItem} /> 
+        <Form onSubmit={this.addItem} />
         <Summ items={this.state.items} />
       </div>
     );

@@ -3,7 +3,7 @@ import { auth } from '../../firebase';
 import './auth.css';
 
 const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
+  [propertyName]: value
 });
 
 class Login extends Component {
@@ -13,14 +13,14 @@ class Login extends Component {
     error: null
   }
 
-  onSubmit = (event) => {
+  onSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
     auth.createUserWithEmailAndPassword(email, password)
-      .then((answer) => {
+      .then(answer => {
         console.log('login', answer);
       })
-      .catch((error) => {
+      .catch(error => {
         this.setState(byPropKey('error', error.message));
       });
   }
@@ -35,7 +35,7 @@ class Login extends Component {
         <form onSubmit={this.onSubmit}>
           {error}
           <div className="login-row">
-            <input 
+            <input
               type="login"
               placeholder="email"
               value={email}
@@ -53,7 +53,7 @@ class Login extends Component {
           <button type="submit" disabled={isInvalid} >Register</button>
         </form>
       </div>
-    )
+    );
   }
 }
 

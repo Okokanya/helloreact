@@ -13,7 +13,7 @@ class List extends Component {
             carbs={item.carbs}
             prots={item.prots}
             portion={item.portion}
-            onRemoveItem={(e) => {this.props.onRemoveItem(index)}}
+            onRemoveItem={e => {this.props.onRemoveItem(index);}}
           />
         ))}
       </ul>

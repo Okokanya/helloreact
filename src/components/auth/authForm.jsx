@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import { auth } from '../../firebase';
 import './auth.css';
 
 const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
+  [propertyName]: value,
 });
 
+const initialState = { error: null };
+
 class Signin extends Component {
-  state = {
-    email: '',
-    password: '',
-    error: null
-  }
+  state = initialState;
 
   onSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
     auth.signInWithEmailAndPassword(email, password)
-      .then(answer => {
+      .then(answer) => {
         console.log('login', answer);
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState(byPropKey('error', error.message));
       });
   }
@@ -35,7 +32,7 @@ class Signin extends Component {
         <form onSubmit={this.onSubmit}>
           {error}
           <div className="login-row">
-            <input
+            <input 
               type="login"
               placeholder="email"
               value={email}
@@ -53,7 +50,7 @@ class Signin extends Component {
           <button type="submit" disabled={isInvalid}>Enter</button>
         </form>
       </div>
-    );
+    )
   }
 }
 

@@ -6,7 +6,6 @@ import Calculator from './components/calculator/calculator';
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 
-
 const initialState = { user: null };
 
 class App extends Component {
