@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Calculator.css';
-import List from './List';
-import Summ from './Summ';
-import Form from './Form';
+import './calculator.css';
+import List from './list';
+import Summ from './summ';
+import Form from './form';
 import img from './img/find.jpg';
 
 class Calculator extends Component {

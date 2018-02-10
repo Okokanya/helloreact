@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Item from './Item';
+import Item from './item';
 
 class List extends Component {
   render() {

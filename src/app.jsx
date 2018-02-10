@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 import * as routes from './routes';
-import Calculator from './components/calculator/Calculator';
-import Signin from './components/auth/Signin';
-import Signup from './components/auth/Signup';
+import Calculator from './components/calculator/calculator';
+import Signin from './components/auth/signin';
+import Signup from './components/auth/signup';
 
 
 const initialState = { user: null };
