@@ -19,7 +19,6 @@ class Calculator extends Component {
   render() {
     return (
       <div className="app">
-        <img src={img} width={500} />
         <h1>Food List</h1>
         <div className="points">
           <div className="tableheader">
