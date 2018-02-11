@@ -15,10 +15,10 @@ const INITIAL_STATE = {
 };
 
 class Signup extends Component {
-  state = INITIAL_STATE
+  state = INITIAL_STATE;
 
   resetError = () => {
-    if (Object.keys(this.state.error).length > 0) this.setState(INITIAL_STATE);
+    if (Object.keys(this.state.error).length > 0) this.setState(state => ({ ...INITIAL_STATE, success: state.success }));
   }
 
   handleSubmit = fields => {
@@ -29,6 +29,7 @@ class Signup extends Component {
     firebase.auth.createUserWithEmailAndPassword(fields.email, fields.password)
       .then(answer => {
         this.setState({ success: true });
+        window.location.replace('/');
       })
       .catch(error => {
         this.setState({ error: { ...INITIAL_STATE.error, message: error.message } });
@@ -42,14 +43,16 @@ class Signup extends Component {
       required: ['email', 'password', 'password-repeat'],
       match: ['password', 'password-repeat']
     };
-    const fieldIsValid = fieldName => !~this.state.error.invalidFields.indexOf(fieldName);
-    if (this.state.success) return (
-      <AuthContainer>
-        <h2>Got it!</h2>
-        <h2><Link to="/signin">Now go sign in</Link></h2>
-        <h2>(and check your email)</h2>
-      </AuthContainer>
-    );
+    const fieldIsValid = fieldName => (!~this.state.error.invalidFields.indexOf(fieldName));
+    if (this.state.success) {
+      return (
+        <AuthContainer>
+          <h2>Got it!</h2>
+          <h2><Link to="/signin">Now go sign in</Link></h2>
+          <h2>(and check your email)</h2>
+        </AuthContainer>
+      );
+    }
 
     return (
       <AuthContainer>
