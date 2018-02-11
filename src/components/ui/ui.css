@@ -1,0 +1,49 @@
+/* button animations */
+
+.ui-button {
+  position: relative;
+  margin: 10px 7px;
+  padding: 10px 25px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #383736;
+  border: 2px #383736 solid;
+  border-radius: 4px;
+  text-transform: uppercase;
+  outline: 0;
+  overflow:hidden;
+  background: none;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+}
+
+.ui-button.disabled {
+  cursor: auto;
+  opacity: .5;
+}
+
+.fade {
+  transition: border 0.3s ease-out;
+}
+
+.fade:before{
+  content:"→";
+  position:absolute;
+  color:#383736;
+  left: 78%;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+}
+
+.fade:hover:before, .fade:focus:before {
+  left:81%;
+  opacity:1;
+}
+
+.fade:hover, .fade:focus {
+  border-color: white;
+  transition: transform 250ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+}
+
+/* ---- */

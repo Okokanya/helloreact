@@ -1,12 +1,68 @@
-.login-form {
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F5F5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.auth-content {
+  background: white;
+  border-radius: 5px;
   padding: 20px;
+  width: 400px;
+  position: relative;
 }
 
-.login-row {
-  margin: 10px 0;
+.auth-form {
+  text-align: center;
 }
 
-.login-row input {
-  border: 1px solid grey;
-  border-radius: 2px;
+.auth-form input {
+  margin-bottom: 20px;
+  border: 2px #383736 solid;
+  border-radius: 4px;
+  padding: 10px 20px;
+  transition: border 0.3s ease-out;
+}
+
+.auth-form input.error {
+  border-color: red;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: white;
+}
+
+.auth-form-header {
+  display: flex;
+  align-items: center;
+}
+
+.auth-form-header div {
+  text-align: right;
+  flex-grow: 1;
+}
+
+.auth-form-submit {
+  text-align: center;
+}
+
+.auth-form-errormessage {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: red;
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

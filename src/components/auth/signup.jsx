@@ -1,60 +1,79 @@
 import React, { Component } from 'react';
-import { auth } from '../../firebase';
-import './auth.css';
+import { Link } from 'react-router-dom';
 
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
-});
+import AuthContainer from './authContainer';
+import Form from '../form/form';
+import SubmitButton from '../form/submitButton';
+import firebase from '../../firebase';
 
-class Login extends Component {
-  state = {
-    email: '',
-    password: '',
-    error: null
+const INITIAL_STATE = {
+  error: {
+    isValid: true,
+    message: '',
+    invalidFields: []
+  }
+};
+
+class Signup extends Component {
+  state = INITIAL_STATE
+
+  resetError = () => {
+    if (Object.keys(this.state.error).length > 0) this.setState(INITIAL_STATE);
   }
 
-  onSubmit = event => {
-    event.preventDefault();
-    const { email, password } = this.state;
-    auth.createUserWithEmailAndPassword(email, password)
+  handleSubmit = fields => {
+    if (!this.error.isValid) {
+      this.setState({ error: this.error });
+      return;
+    }
+    firebase.auth.createUserWithEmailAndPassword(fields.email, fields.password)
       .then(answer => {
-        console.log('login', answer);
+        this.setState({ success: true });
       })
       .catch(error => {
-        this.setState(byPropKey('error', error.message));
+        this.setState({ error: { ...INITIAL_STATE.error, message: error.message } });
       });
   }
 
+  handleFormError = error => this.error = error;
+
   render() {
-    const { email, password, error } = this.state;
-    const isInvalid = email === '' || password === '';
+    const validation = {
+      required: ['email', 'password', 'password-repeat'],
+      match: ['password', 'password-repeat']
+    };
+    const fieldIsValid = fieldName => !~this.state.error.invalidFields.indexOf(fieldName);
+    if (this.state.success) return (
+      <AuthContainer>
+        <h2>Got it!</h2>
+        <h2><Link to="/signin">Now go sign in</Link></h2>
+        <h2>(and check your email)</h2>
+      </AuthContainer>
+    );
 
     return (
-      <div className="login-form">
-        <h1>Sign up</h1>
-        <form onSubmit={this.onSubmit}>
-          {error}
-          <div className="login-row">
-            <input
-              type="login"
-              placeholder="email"
-              value={email}
-              onChange={event => this.setState(byPropKey('email', event.target.value))}
-            />
-          </div>
-          <div className="login-row">
-            <input
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={event => this.setState(byPropKey('password', event.target.value))}
-            />
-          </div>
-          <button type="submit" disabled={isInvalid} >Register</button>
-        </form>
-      </div>
+      <AuthContainer>
+        <div className="auth-form-header">
+          <h2>Sign up!</h2>
+          <div><Link to="/signin">Wanna sign in?!</Link></div>
+        </div>
+        <Form
+          onSubmit={this.handleSubmit}
+          onError={this.handleFormError}
+          onChange={this.resetError}
+          validation={validation}
+          className="auth-form"
+          submitWithError
+        >
+          <input name="email" type="text" placeholder="email" className={!fieldIsValid('email') ? 'error' : ''} />
+          <input name="password" type="password" placeholder="password" className={!fieldIsValid('password') ? 'error' : ''} />
+          <input name="password-repeat" type="password" placeholder="password one more time" className={!fieldIsValid('password-repeat') ? 'error' : ''} />
+          <SubmitButton style="fade">Register</SubmitButton>
+          <div>{this.state.error.message && <div className="auth-form-errormessage">{this.state.error.message}</div>}</div>
+        </Form>
+      </AuthContainer>
     );
   }
 }
 
-export default Login;
+export default Signup;
